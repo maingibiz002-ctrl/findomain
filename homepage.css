@@ -144,8 +144,98 @@ body {
 .footer{
     background-color: var(--deep-black);
 }
-/*----------------------------body -----------------------------*/
-/* --- Slideshow Engine --- */
+/*------------------------------------------------------------------------------body -----------------------------*/
+/* --- ----Slideshow Engine --- */
+/* --- Ticker Styling --- */
+.market-overview {
+    background-color: #050505;
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+.slider-title {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0 10%;
+}
+
+.slider-title h2 {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.slider-title p {
+    color: #a0a0a0;
+}
+
+/* The Ticker Engine */
+.market-ticker-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: #111;
+    padding: 20px 0;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+.market-ticker-track {
+    display: flex;
+    width: calc(250px * 12); /* Based on card width * total cards */
+    animation: scrollMarket 40s linear infinite;
+}
+
+.market-card {
+    width: 250px;
+    padding: 0 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid #222;
+}
+
+.market-card .symbol {
+    color: #d36b2d; /* Signature Orange */
+    font-weight: 800;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+}
+
+.market-card .price {
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 900;
+}
+
+.market-card .change {
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.change.up { color: #00ff00; }
+.change.down { color: #ff3333; }
+/* -------------------------------------------- End of Ticker Styles --- */
+
+/* Animation Keyframes */
+@keyframes scrollMarket {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-250px * 6)); } /* Move by half the track length */
+}
+
+/* Pause on Hover so users can read specific data */
+.market-ticker-container:hover .market-ticker-track {
+    animation-play-state: paused;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 900px) {
+    .pestle-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 600px) {
+    .pestle-grid { grid-template-columns: repeat(2, 1fr); }
+}
 .background-slideshow {
     position: fixed;
     width: 100%;
@@ -179,37 +269,422 @@ body {
     100% { opacity: 0; }
 }
 
-/* --- Fixed Content Styles --- */
-.content-overlay {
+
+
+
+
+
+
+
+
+
+/* --- Global Container Adjustment --- */
+body {
+    background-color: #000;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* --- 1. HERO WRAPPER (The Container) --- */
+.hero-slider-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    display: block; /* Ensures it pushes next sections down */
+    background: #000;
+}
+
+/* --- 2. THE VIEWPORT (The Mask) --- */
+.carousel-view {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+/* --- 3. THE ANIMATED TRACK --- */
+.slide-track {
+    display: flex;
+    width: 400%; /* 4 slides = 400% */
+    height: 100%;
+    position: relative;
+    left: 0;
+    /* This animation handles the 4-page scroll */
+    animation: slideTrackLTR 24s cubic-bezier(0.7, 0, 0.3, 1) infinite;
+}
+
+/* --- 4. THE INDIVIDUAL SLIDE --- */
+.carousel-slide {
+    width: 25%; /* Exactly 1/4 of the 400% track */
+    min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: flex-start; /* Align content to left edge */
+    padding: 60px 2%; /* 2% padding for left-edge focus */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* --- 5. CONTENT ALIGNMENT --- */
+.content-overlay {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    width: 100%;
+    align-items: center;
     justify-content: space-between;
-    padding: 0 10%;
-    height: 100vh;
+    text-align: left;
+}
+
+.slide-title {
+    font-size: 5.5rem;
+    font-weight: 900;
+    line-height: 0.85;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.orange-card-frame{
+    background: #d36b2d;
+    max-width: 400px;
+    max-height: 400px;
+    padding: 30px;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.image1{
+    border-radius: 30px;
+}
+.content-right{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* --- 6. ANIMATION KEYFRAMES --- */
+@keyframes slideTrackLTR {
+    0%, 20% { transform: translateX(0); }
+    25%, 45% { transform: translateX(-25%); }
+    50%, 70% { transform: translateX(-50%); }
+    75%, 95% { transform: translateX(-75%); }
+    100% { transform: translateX(0); }
+}
+
+
+
+
+
+
+
+
+
+/* --- Services & Expert Sections (Left Aligned) --- */
+.services-section, .expert-profiles {
+    padding: 100px 5% 100px 2%; /* Matches the Hero padding */
+    text-align: left; /* Ensures headers align left */
+}
+
+.services-container {
+    background: #d36b2d;
+    padding: 50px;
+    border-radius: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    /* Ensures the orange block aligns with the text above */
+    margin-left: 0; 
+}
+
+.profile-card {
+    display: flex;
+    background: #111;
+    border-radius: 40px;
+    padding: 40px;
+    gap: 40px;
+    align-items: center;
+    border: 1px solid #222;
+    margin-left: 0;
+}
+
+/* --- Animation Reset --- */
+@keyframes slideTrackLTR {
+    0%, 20% { transform: translateX(0); }
+    25%, 45% { transform: translateX(-25%); }
+    50%, 70% { transform: translateX(-50%); }
+    75%, 95% { transform: translateX(-75%); }
+    100% { transform: translateX(0); }
+}
+
+
+
+
+
+
+
+
+
+.services-section {
+    padding: 80px 10%;
+    /* Same background logic as hero for consistency */
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('your-background-code.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+}
+
+.services-container {
+    background-color: #d36b2d; /* The main orange container color */
+    padding: 60px;
+    border-radius: 50px;
+    display: grid;
+    /* Creates 3 equal columns */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px;
+    max-width: 1200px;
+}
+
+.service-card {
+    background-color: #1a1c20; /* Dark charcoal color for the inner cards */
+    aspect-ratio: 1 / 1; /* Keeps cards perfectly square */
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card h3 {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Hover effect to make it interactive */
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+
+/* Responsive: stack cards on mobile */
+@media (max-width: 900px) {
+    .services-container {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .services-container {
+        grid-template-columns: 1fr;
+    }
+}
+.services-container.extended-grid {
+    background-color: #d36b2d; /* Orange container from image */
+    padding: 60px;
+    border-radius: 50px;
+    display: grid;
+    /* Updated to 4 columns to fit 8 cards perfectly */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 25px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background-color: #1a1c20; /* Dark card color from image */
+    aspect-ratio: 1 / 1.1; /* Slightly taller for longer text */
+    border-radius: 25px;
+    display: flex;
+    align-items: flex-end; /* Text sits at the bottom per image */
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.service-card h3 {
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 0 10px;
+}
+
+/* Hover effect */
+.service-card:hover {
+    background-color: #25282e;
+    transform: scale(1.05);
+}
+
+/* Tablet adjustments (2x4 grid) */
+@media (max-width: 1024px) {
+    .services-container.extended-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile adjustments (1x8 grid) */
+@media (max-width: 600px) {
+    .services-container.extended-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* --- Trust Bar Styles --- */
+.trust-bar {
+    background-color: #111;
+    display: flex;
+    justify-content: space-around;
+    padding: 60px 10%;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #d36b2d; /* Your signature orange */
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    color: #a0a0a0;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* --- Faculty Section Styles --- */
+.faculty-section {
+    padding: 100px 10%;
+    background-color: #000;
+    text-align: center;
+}
+
+.section-heading {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 60px;
+    text-transform: uppercase;
+}
+
+.expert-profiles {
+    background-color: #050505;
+    padding: 80px 10%;
     color: white;
 }
 
-.hero-title {
-    font-size: 5rem;
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: #d36b2d; /* Signature Orange */
+    text-transform: uppercase;
+}
+
+.profile-card {
+    display: flex;
+    align-items: center;
+    background: #111;
+    border-radius: 40px; /* Matching the card style from your image */
+    padding: 40px;
+    margin-bottom: 40px;
+    gap: 50px;
+    border: 1px solid #222;
+}
+
+.profile-image {
+    flex: 1;
+    max-width: 300px;
+}
+
+.profile-image img {
+    width: 100%;
+    border-radius: 30px;
+    border: 2px solid #d36b2d;
+    display: block;
+}
+
+.profile-info {
+    flex: 2;
+}
+
+.instructor-name {
+    font-size: 2rem;
     font-weight: 900;
-    line-height: 1;
-
+    margin-bottom: 5px;
 }
 
-.orange-card {
-    background: #d36b2d; /* The orange from your image */
-    padding: 40px 20px;
-    border-radius: 40px;
-    width: 380px;
-    height: 500px;
+.instructor-role {
+    color: #d36b2d;
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
 }
 
-.card-inner {
-    background: white;
-    border-radius: 10px 30px 100px 100px; /* Matching your image shape */
-    overflow: hidden;
-    max-width: 500px;
-    max-height: 300px;
+.instructor-bio {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.instructor-stats {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+}
+
+.instructor-stats li {
+    font-size: 0.9rem;
+    color: #a0a0a0;
+}
+
+.instructor-stats strong {
+    color: white;
+    display: block;
+}
+
+/* Responsive for mobile - stacks the image on top of text */
+@media (max-width: 850px) {
+    .profile-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .instructor-stats {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .trust-bar {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .faculty-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /*--------footer---------------------------------------------------------------------------------------------------*/
