@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy Enrollment | Alpha Quant Academy</title>
+    <link rel="stylesheet" href="enroll.css">
+       <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22black%22/><text y=%22.9em%22 font-size=%2280%22 font-family=%22serif%22 fill=%22%23FF6B00%22 x=%2250%%22 text-anchor=%22middle%22>α</text></svg>">
+
+</head>
+<body>
+
+    <header class="academy-hero">
+        <div class="hero-content">
+            <h1>Alpha Quant Academy</h1>
+            <p>Choose your track and master the future of systematic finance.</p>
+        </div>
+    </header>
+
+    <main class="enrollment-wrapper">
+        
+        <section id="python-finance" class="enrollment-card">
+            <div class="card-inner">
+                <div class="track-info">
+                    <span class="difficulty-tag">Level: Foundation</span>
+                    <h2>Python for Finance</h2>
+                    <p class="track-description">The essential starting point for any modern quant. We take you from "zero code" to building your own automated data pipelines and backtesting engines.</p>
+                    
+                    <div class="curriculum-preview">
+                        <h4>What you will master:</h4>
+                        <ul>
+                            <li>Data Analysis with Pandas & NumPy</li>
+                            <li>Automated Market Data Retrieval</li>
+                            <li>Building Custom Technical Indicators</li>
+                            <li>Vectorized Backtesting Frameworks</li>
+                        </ul>
+                    </div>
+                    <a href="#enroll-form" class="enroll-btn" onclick="setTrack('Python for Finance')">Enroll in Python Track</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="algo-trading" class="enrollment-card">
+            <div class="card-inner">
+                <div class="track-info">
+                    <span class="difficulty-tag">Level: Intermediate</span>
+                    <h2>Algorithmic Trading & MQL5</h2>
+                    <p class="track-description">Bridge the gap between strategy and execution. Learn to build professional-grade Expert Advisors (EAs) that trade 24/7 with institutional precision.</p>
+                    
+                    <div class="curriculum-preview">
+                        <h4>What you will master:</h4>
+                        <ul>
+                            <li>MQL5 & Python Integration</li>
+                            <li>Multi-Timeframe Logic Execution</li>
+                            <li>Advanced Trailing Stops & Risk Protocols</li>
+                            <li>Live Deployment & Cloud Hosting</li>
+                        </ul>
+                    </div>
+                    <a href="#enroll-form" class="enroll-btn" onclick="setTrack('Algorithmic Trading')">Enroll in Algo Track</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="ml-finance" class="enrollment-card">
+            <div class="card-inner">
+                <div class="track-info">
+                    <span class="difficulty-tag">Level: Advanced</span>
+                    <h2>Machine Learning in Finance</h2>
+                    <p class="track-description">The frontier of quantitative trading. Apply predictive modeling to financial time-series data to identify alpha that traditional indicators miss.</p>
+                    
+                    <div class="curriculum-preview">
+                        <h4>What you will master:</h4>
+                        <ul>
+                            <li>Feature Engineering for Market Data</li>
+                            <li>Supervised Learning (XGBoost & Random Forests)</li>
+                            <li>Deep Learning (LSTMs for Price Prediction)</li>
+                            <li>Model Validation & Walk-Forward Optimization</li>
+                        </ul>
+                    </div>
+                    <a href="#enroll-form" class="enroll-btn" onclick="setTrack('Machine Learning')">Enroll in ML Track</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <section id="enroll-form" class="registration-area">
+        <div class="form-box">
+            <h2>Application for Enrollment</h2>
+            <p>Start your journey by selecting your preferred track below.</p>
+            
+            <form action="#" class="academy-form">
+                <div class="input-row">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+                
+                <select id="track-select" required>
+                    <option value="" disabled selected>Select Your Learning Track...</option>
+                    <option value="python">Python for Finance (Foundation)</option>
+                    <option value="algo">Algorithmic Trading (Intermediate)</option>
+                    <option value="ml">Machine Learning in Finance (Advanced)</option>
+                </select>
+
+                <textarea placeholder="Tell us about your current trading experience (optional)" rows="4"></textarea>
+                
+                <button type="submit" class="submit-enroll-btn">Submit Application</button>
+            </form>
+        </div>
+    </section>
+
+</body>
+</html>

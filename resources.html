@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quant Resources | Alpha Quant Academy</title>
+    <link rel="stylesheet" href="resources.css">
+       <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22black%22/><text y=%22.9em%22 font-size=%2280%22 font-family=%22serif%22 fill=%22%23FF6B00%22 x=%2250%%22 text-anchor=%22middle%22>α</text></svg>">
+
+
+</head>
+<body>
+
+    <header class="resource-header">
+        <h1>Quant Resource Hub</h1>
+        <p>Institutional Insight & Real-Time Market Infrastructure</p>
+    </header>
+
+    <main class="hub-grid">
+        
+        <section class="resource-section wide">
+            <div class="section-header">
+                <div class="icon-box">🕒</div>
+                <h2>Global Session Monitor</h2>
+            </div>
+            <div class="clock-display">
+                <div class="clock-container">
+                    <div class="analog-clock" id="ny-clock">
+                        <div class="hand hour"></div><div class="hand minute"></div><div class="hand second"></div><div class="center-dot"></div>
+                    </div>
+                    <span class="city">New York (EST)</span>
+                    <span id="ny-status" class="status-text">--</span>
+                </div>
+                <div class="clock-container">
+                    <div class="analog-clock" id="london-clock">
+                        <div class="hand hour"></div><div class="hand minute"></div><div class="hand second"></div><div class="center-dot"></div>
+                    </div>
+                    <span class="city">London (GMT)</span>
+                    <span id="london-status" class="status-text">--</span>
+                </div>
+                <div class="clock-container">
+                    <div class="analog-clock" id="nairobi-clock">
+                        <div class="hand hour"></div><div class="hand minute"></div><div class="hand second"></div><div class="center-dot"></div>
+                    </div>
+                    <span class="city">Nairobi (EAT)</span>
+                    <span id="nairobi-status" class="status-text">--</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="resource-section">
+            <div class="section-header">
+                <div class="icon-box">📉</div>
+                <h2>Weekly Market Regime</h2>
+            </div>
+            <div class="regime-box">
+                <h4>Status: Mean Reversion High Probability</h4>
+                <p>Current ATR levels suggest price compression. Focus on range-bound strategies until a volume-backed breakout occurs.</p>
+            </div>
+        </section>
+
+        <section class="resource-section">
+            <div class="section-header">
+                <div class="icon-box">📖</div>
+                <h2>Quant Glossary</h2>
+            </div>
+            <div class="glossary-item">
+                <strong>Expected Value (EV)</strong>
+                <span>The average amount a trader can expect to win or lose per trade over the long run.</span>
+            </div>
+            <div class="glossary-item">
+                <strong>Drawdown</strong>
+                <span>The peak-to-trough decline during a specific period for an investment.</span>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function updateMarketClocks() {
+            const now = new Date();
+
+            // Config: Offset from UTC, Open Hour, Close Hour
+            const configs = [
+                { id: 'ny', offset: -5, open: 9, close: 16 },      // NY (EST)
+                { id: 'london', offset: 0, open: 8, close: 16 },  // London (GMT)
+                { id: 'nairobi', offset: 3, open: 9, close: 15 }  // Nairobi (EAT)
+            ];
+
+            configs.forEach(config => {
+                const clock = document.getElementById(config.id + '-clock');
+                const statusEl = document.getElementById(config.id + '-status');
+
+                // Timezone math
+                const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+                const localDate = new Date(utc + (3600000 * config.offset));
+
+                const hrs = localDate.getHours();
+                const mins = localDate.getMinutes();
+                const secs = localDate.getSeconds();
+                const day = localDate.getDay(); 
+
+                // Rotate Hands
+                const hDeg = (hrs % 12) * 30 + mins * 0.5;
+                const mDeg = mins * 6;
+                const sDeg = secs * 6;
+
+                clock.querySelector('.hour').style.transform = `translateX(-50%) rotate(${hDeg}deg)`;
+                clock.querySelector('.minute').style.transform = `translateX(-50%) rotate(${mDeg}deg)`;
+                clock.querySelector('.second').style.transform = `translateX(-50%) rotate(${sDeg}deg)`;
+
+                // Market Open/Closed Logic (Mon-Fri)
+                const isWeekend = (day === 0 || day === 6);
+                const isOpen = !isWeekend && (hrs >= config.open && hrs < config.close);
+
+                if (isOpen) {
+                    statusEl.innerText = "Market Open";
+                    statusEl.className = "status-text open-bg";
+                    clock.classList.add('market-open');
+                    clock.classList.remove('market-closed');
+                } else {
+                    statusEl.innerText = "Market Closed";
+                    statusEl.className = "status-text closed-bg";
+                    clock.classList.add('market-closed');
+                    clock.classList.remove('market-open');
+                }
+            });
+        }
+
+        setInterval(updateMarketClocks, 1000);
+        updateMarketClocks();
+    </script>
+</body>
+</html>

@@ -118,9 +118,11 @@ body {
 
 /* --- 6. Glassmorphism Login Box --- */
 .form-side {
-    flex: 0.8;
+    flex: 1;
     display: flex;
     justify-content: flex-end;
+    padding: 20px;
+    
 }
 
 .glass-card {
@@ -128,7 +130,7 @@ body {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     width: 100%;
-    max-width: 420px;
+    max-width: 920px;
     padding: 60px 40px;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);

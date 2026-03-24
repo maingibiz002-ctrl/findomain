@@ -1,0 +1,197 @@
+/* Core Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #0b0c0e;
+    color: #ffffff;
+}
+
+/* Academy Hero */
+.academy-hero {
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('academy-bg.jpg');
+    background-size: cover;
+    border-bottom: 2px solid #d36e35;
+}
+
+.academy-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+
+.academy-hero p {
+    color: #d36e35;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Enrollment Grid */
+.enrollment-wrapper {
+    max-width: 1200px;
+    margin: -50px auto 100px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.enrollment-card {
+    background: #16181b;
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid #2a2d32;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.enrollment-card:hover {
+    border-color: #d36e35;
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.difficulty-tag {
+    background: rgba(211, 110, 53, 0.1);
+    color: #d36e35;
+    padding: 6px 15px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.enrollment-card h2 {
+    margin: 20px 0 15px;
+    font-size: 1.6rem;
+}
+
+.track-description {
+    color: #9da3ae;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    height: 80px; /* Keeps card heights consistent */
+}
+
+.curriculum-preview h4 {
+    font-size: 0.9rem;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.curriculum-preview ul {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.curriculum-preview li {
+    font-size: 0.85rem;
+    color: #9da3ae;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.curriculum-preview li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #d36e35;
+}
+
+/* Enrollment Button */
+.enroll-btn {
+    margin-top: auto;
+    display: block;
+    text-align: center;
+    background: #d36e35;
+    color: #fff;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: background 0.3s;
+}
+
+.enroll-btn:hover {
+    background: #fff;
+    color: #d36e35;
+}
+
+/* Registration Form Area */
+.registration-area {
+    padding: 100px 20px;
+    background: #0f1113;
+    display: flex;
+    justify-content: center;
+}
+
+.form-box {
+    background: #16181b;
+    max-width: 800px;
+    width: 100%;
+    padding: 60px;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.form-box h2 { font-size: 2.2rem; margin-bottom: 10px; }
+.form-box p { color: #d36e35; margin-bottom: 40px; }
+
+.academy-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+input, select, textarea {
+    background: #0b0c0e;
+    border: 1px solid #2a2d32;
+    padding: 18px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1rem;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #d36e35;
+}
+
+.submit-enroll-btn {
+    background: #d36e35;
+    color: white;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-enroll-btn:hover {
+    background: #b55a2a;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .enrollment-wrapper { grid-template-columns: 1fr; margin-top: 40px; }
+    .input-row { grid-template-columns: 1fr; }
+}

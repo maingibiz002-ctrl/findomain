@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #0b0c0e;
+    color: #ffffff;
+    padding-bottom: 50px;
+}
+
+.resource-header {
+    background: #16181b;
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom: 2px solid #d36e35;
+    margin-bottom: 40px;
+}
+
+.hub-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    padding: 0 20px;
+}
+
+.resource-section {
+    background: #16181b;
+    border-radius: 15px;
+    padding: 30px;
+    border: 1px solid #2a2d32;
+}
+
+.wide { grid-column: span 2; }
+
+/* Clock Visuals */
+.clock-display {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.clock-container { text-align: center; flex: 1; }
+
+.analog-clock {
+    width: 130px;
+    height: 130px;
+    border: 3px solid #333;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    position: relative;
+    background: #0f1113;
+    transition: all 0.5s ease;
+}
+
+.market-open { border-color: #2ecc71 !important; box-shadow: 0 0 10px rgba(46, 204, 113, 0.2); }
+.market-closed { border-color: #e74c3c !important; }
+
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom;
+    background: #fff;
+    border-radius: 10px;
+    transform: translateX(-50%) rotate(0deg);
+}
+
+.hour { width: 4px; height: 30%; z-index: 3; }
+.minute { width: 3px; height: 40%; background: #b0b0b0; z-index: 2; }
+.second { width: 2px; height: 45%; background: #d36e35; z-index: 1; }
+
+.center-dot {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 8px; height: 8px;
+    background: #d36e35;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.status-text { font-size: 0.7rem; font-weight: 900; padding: 4px 12px; border-radius: 4px; text-transform: uppercase; }
+.open-bg { background: #2ecc71; color: #fff; }
+.closed-bg { background: #e74c3c; color: #fff; }
+
+/* Content Sections */
+.regime-box { background: #0b0c0e; padding: 20px; border-radius: 10px; border-left: 4px solid #d36e35; }
+.glossary-item { margin-bottom: 15px; border-bottom: 1px solid #2a2d32; padding-bottom: 10px; }
+.glossary-item strong { color: #d36e35; display: block; }
+.glossary-item span { font-size: 0.85rem; color: #b0b0b0; }
