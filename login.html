@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login | AlphaQuant</title>
+    <!-- 1. Load Supabase Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- 2. Load Your Config (The URL and Key) -->
+    <script src="supabase-config.js"></script>
+    <link rel="stylesheet" href="login.css">
+          <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22black%22/><text y=%22.9em%22 font-size=%2280%22 font-family=%22serif%2２ fill=%2２%23FF6B00%2２ x=%2２50%%2２ text-anchor=%2２middle%2２>α</text></svg>">
+
+</head>
+<body>
+    <div class="login-container">
+        <h2>Welcome Back</h2>
+        <form id="login-form">
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button type="submit" style="background-color: #D36E35;">Login</button>
+        </form>
+        <p>Don't have an account? <a href="signup-index.html">Sign Up</a></p>
+    </div>
+
+    <script>
+        const loginForm = document.querySelector('#login-form');
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.querySelector('#login-email').value;
+            const password = document.querySelector('#login-password').value;
+
+            // Use 'signInWithPassword' for existing users
+            const { data, error } = await _supabase.auth.signInWithPassword({
+                email: email,
+                password: password,
+            });
+
+            if (error) {
+                alert("Login Failed: " + error.message);
+            } else {
+                // Redirect to homepage or a private dashboard
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>

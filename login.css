@@ -1,0 +1,106 @@
+/* General Page Styling */
+body {
+    background-color: #121212; /* Deep darkTo keep your **AlphaQuant** and **Dons Media** branding consistent, this CSS uses your preferred dark, refined aesthetic with the **#D36E35** accent color.
+
+### **The CSS for `login.html`**
+You can place this inside a `<style>` tag in your `<head>` or in a separate `style.css` file.
+
+```css
+/* General Reset */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+body {
+    background-color: #121212; /* Deep dark background */
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Login Card Container */
+.login-container {
+    background-color: #1E1E1E; /* Slightly lighter dark for the card */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #333;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 25px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Form Styling */
+#login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input {
+    background-color: #2A2A2A;
+    border: 1px solid #444;
+    padding: 12px 15px;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #D36E35; /* Your brand orange accent */
+}
+
+/* Primary Action Button */
+button {
+    background-color: #D36E35; /* Your brand orange */
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #B55A2B; /* A slightly darker shade for hover */
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Link Styling */
+p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #AAA;
+}
+
+a {
+    color: #D36E35;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}

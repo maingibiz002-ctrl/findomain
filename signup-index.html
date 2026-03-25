@@ -3,60 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> FIN College| Secure Login</title>
+    <title>Join AlphaQuant | Sign Up</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
     <link rel="stylesheet" href="signup-style.css">
-      <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22black%22/><text y=%22.9em%22 font-size=%2280%22 font-family=%22serif%2２ fill=%2２%23FF6B00%2２ x=%2２50%%2２ text-anchor=%2２middle%2２>α</text></svg>">
-
 </head>
 <body>
-<div class="header-logo">
-        <div class="logo-text">
-            <span class="orange-box">&beta;</span> FIN<span class="orange-text">College</span>
-        </div>
-   
 
-    <main class="login-container">
-        <section class="welcome-side">
-            <h1>Welcome!</h1>
-            <div class="accent-line"></div>
-            <p class="description">
-                Access advanced quant strategies and institutional-grade risk management. 
-                Master the markets with AlphaQuant Academy.
+    <div class="auth-container">
+        <div class="auth-card">
+            <h2>Create Account</h2>
+            <p class="subtitle">Start your journey with FIN College</p>
+            
+            <form id="signup-form">
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="name@company.com" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="btn-primary">Sign Up</button>
+            </form>
+
+            <p class="footer-text">
+                Already have an account? <a href="login.html">Login here</a>
             </p>
-            <button class="btn-primary">Learn More</button>
-        </section>
+        </div>
+    </div>
 
-        <section class="form-side">
-            <div class="glass-card">
-                <h2>Sign In</h2>
-                <form id="login-form">
-                    <div class="input-field">
-                        <label>User Name</label>
-                        <input type="text" placeholder="Enter your username" required>
-                    </div>
-                    <div class="input-field">
-                        <label>Password</label>
-                        <input type="password" placeholder="••••••••" required>
-                    </div>
-                    <button type="submit" class="btn-submit">Submit</button>
-                </form>
+    <script>
+        const signupForm = document.querySelector('#signup-form');
 
-                <div class="divider">
-                    <span>Or</span>
-                </div>
+        signupForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.querySelector('#email').value;
+            const password = document.querySelector('#password').value;
 
-                <div class="social-row">
-                    <i class="fab fa-facebook-f"></i>
-                    <i class="fab fa-instagram"></i>
-                    <i class="fab fa-twitter"></i>
-                </div>
+            // Logic to send data to Supabase
+            const { data, error } = await _supabase.auth.signUp({
+                email: email,
+                password: password,
+            });
 
-                <p class="footer-link">
-                    Don't have an account? <a href="#">Sign Up</a>
-                </p>
-            </div>
-        </section>
-    </main>
-
+            if (error) {
+                alert("Signup Error: " + error.message);
+            } else {
+                alert("Success! Please check your email for a confirmation link.");
+                window.location.href = 'index.html?status=pending';
+            }
+        });
+    </script>
 </body>
 </html>
